@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>{{ page.title }} - {{ site.title }}</title>
+    <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
+    <script defer>
+      document.addEventListener("DOMContentLoaded", () => {
+        const toggle = document.getElementById("nav-toggle");
+        const menu = document.getElementById("nav-menu");
+        toggle.addEventListener("click", () => {
+          menu.classList.toggle("open");
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="brand">
+        <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
+      </div>
+
+      <div id="nav-toggle" class="nav-toggle" aria-label="Toggle menu">
+      </div>
+
+      <nav id="nav-menu" class="nav-links">
+        <a href="{{ '/home/' | relative_url }}">Home</a>
+        <a href="{{ '/blog/' | relative_url }}">Blog</a>
+        <a href="{{ '/about/' | relative_url }}">About</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      {{ content }}
+    </main>
+  </body>
+</html>

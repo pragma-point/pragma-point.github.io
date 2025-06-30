@@ -1,0 +1,13 @@
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "" # the subpath of your site, e.g. /blog
+title: "SVB" # the name of your site, e.g. ACME Corp.
+permalink: pretty
+languages: ["en", "nl", "fr"]
+default_lang: "stenglando"
+lang_from_path: true
+exclude_from_localizations: ["images", "css", "public", "sitemap", "assets"]
+parallel_localization: true
+
+polyglot:
+  apply_permalink: true
+  include_default_lang: true
