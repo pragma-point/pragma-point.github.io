@@ -12,6 +12,50 @@
         toggle.addEventListener("click", () => {
           menu.classList.toggle("open");
         });
+
+        // Language switching functionality
+        const langToggle = document.getElementById("language-toggle");
+        const langMenu = document.getElementById("language-menu");
+        const langOptions = document.querySelectorAll(".language-option");
+
+        langToggle.addEventListener("click", (e) => {
+          e.preventDefault();
+          langMenu.classList.toggle("show");
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener("click", (e) => {
+          if (!langToggle.contains(e.target) && !langMenu.contains(e.target)) {
+            langMenu.classList.remove("show");
+          }
+        });
+
+        langOptions.forEach(option => {
+          option.addEventListener("click", (e) => {
+            e.preventDefault();
+            const newLang = e.target.dataset.lang;
+            const currentPath = window.location.pathname;
+            
+            // Extract the current page path without language prefix
+            let pagePath = currentPath;
+            if (currentPath.startsWith('/en/')) {
+              pagePath = currentPath.substring(3);
+            } else if (currentPath.startsWith('/fr/')) {
+              pagePath = currentPath.substring(3);
+            } else if (currentPath.startsWith('/nl/')) {
+              pagePath = currentPath.substring(3);
+            }
+            
+            // Handle root page
+            if (pagePath === '/' || pagePath === '') {
+              pagePath = '/home/';
+            }
+            
+            // Construct new URL
+            const newUrl = `/${newLang}${pagePath}`;
+            window.location.href = newUrl;
+          });
+        });
       });
     </script>
   </head>
@@ -28,6 +72,18 @@
         <a href="{{ '/home/' | relative_url }}">Home</a>
         <a href="{{ '/blog/' | relative_url }}">Blog</a>
         <a href="{{ '/about/' | relative_url }}">About</a>
+        
+        <div class="language-dropdown">
+          <button id="language-toggle" class="language-button" aria-label="Select language">
+            <span id="current-lang">{{ page.lang | default: site.default_lang | upcase }}</span>
+            <span class="dropdown-arrow">▼</span>
+          </button>
+          <div id="language-menu" class="language-menu">
+            <a href="#" data-lang="en" class="language-option">EN</a>
+            <a href="#" data-lang="fr" class="language-option">FR</a>
+            <a href="#" data-lang="nl" class="language-option">NL</a>
+          </div>
+        </div>
       </nav>
     </header>
 
