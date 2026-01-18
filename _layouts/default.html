@@ -12,10 +12,17 @@
     <script defer>
       document.addEventListener("DOMContentLoaded", () => {
         const toggle = document.getElementById("nav-toggle");
+        const navClose = document.getElementById("nav-close");
         const menu = document.getElementById("nav-menu");
 
         toggle.addEventListener("click", () => {
           menu.classList.toggle("open");
+          document.body.classList.toggle("menu-open");
+        });
+
+        navClose.addEventListener("click", () => {
+          menu.classList.remove("open");
+          document.body.classList.remove("menu-open");
         });
 
         // Language switching functionality
@@ -40,7 +47,7 @@
             e.preventDefault();
             const newLang = e.target.dataset.lang;
             const currentPath = window.location.pathname;
-            
+
             // Extract the current page path without language prefix
             let pagePath = currentPath;
             if (currentPath.startsWith('/en/')) {
@@ -50,17 +57,34 @@
             } else if (currentPath.startsWith('/nl/')) {
               pagePath = currentPath.substring(3);
             }
-            
+
             // Handle root page
             if (pagePath === '/' || pagePath === '') {
               pagePath = '/home/';
             }
-            
+
             // Construct new URL
             const newUrl = `/${newLang}${pagePath}`;
             window.location.href = newUrl;
           });
         });
+
+        // Carousel functionality
+        const carousel = document.getElementById("services-carousel");
+        const prevBtn = document.getElementById("carousel-prev");
+        const nextBtn = document.getElementById("carousel-next");
+
+        if (carousel && prevBtn && nextBtn) {
+          const scrollAmount = 340; // Card width + gap
+
+          prevBtn.addEventListener("click", () => {
+            carousel.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+          });
+
+          nextBtn.addEventListener("click", () => {
+            carousel.scrollBy({ left: scrollAmount, behavior: "smooth" });
+          });
+        }
       });
     </script>
   </head>
@@ -76,6 +100,7 @@
         </div>
   
         <nav id="nav-menu" class="nav-links">
+          <img src="/assets/img/x-solid-full.svg" alt="Close Menu" id="nav-close" class="nav-close">
           <a href="{{ '/home/' | relative_url }}">Home</a>
           <a href="{{ '/contact/' | relative_url }}">Contact</a>
           
