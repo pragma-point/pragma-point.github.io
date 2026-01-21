@@ -67,8 +67,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Auto-advance every 7 seconds
-  setInterval(() => {
-    const nextIndex = (currentIndex + 1) % slides.length;
-    updateCarousel(nextIndex);
-  }, 7000);
+  // setInterval(() => {
+  //   const nextIndex = (currentIndex + 1) % slides.length;
+  //   updateCarousel(nextIndex);
+  // }, 7000);
 });
