@@ -68,54 +68,44 @@
             window.location.href = newUrl;
           });
         });
-
-        // Carousel functionality
-        const carousel = document.getElementById("services-carousel");
-        const prevBtn = document.getElementById("carousel-prev");
-        const nextBtn = document.getElementById("carousel-next");
-
-        if (carousel && prevBtn && nextBtn) {
-          const scrollAmount = 340; // Card width + gap
-
-          prevBtn.addEventListener("click", () => {
-            carousel.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-          });
-
-          nextBtn.addEventListener("click", () => {
-            carousel.scrollBy({ left: scrollAmount, behavior: "smooth" });
-          });
-        }
       });
     </script>
   </head>
   <body>
-    <header class="navbar-container">
-      <div class="navbar">
-        <div class="brand">
-          <img src="/assets/img/logo-outline.png" alt="Pragma Point Logo">
-        </div>
+    <header>
+      <div class="navbar-container">
+        <div class="navbar">
+          <div class="brand">
+            <img src="/assets/img/logo-outline.png" alt="Pragma Point Logo">
+          </div>
   
-        <div id="nav-toggle" class="nav-toggle" aria-label="Toggle menu">
-          <img src="/assets/img/bars-solid-full.svg" alt="Toggle Menu">
-        </div>
+          <div id="nav-toggle" class="nav-toggle" aria-label="Toggle menu">
+            <img src="/assets/img/bars-solid-full.svg" alt="Toggle Menu">
+          </div>
   
-        <nav id="nav-menu" class="nav-links">
-          <img src="/assets/img/x-solid-full.svg" alt="Close Menu" id="nav-close" class="nav-close">
-          <a href="{{ '/home/' | relative_url }}">Home</a>
-          <a href="{{ '/contact/' | relative_url }}">Contact</a>
-          
-          <!-- <div class="language-dropdown">
-            <button id="language-toggle" class="language-button" aria-label="Select language">
-              <span id="current-lang">{{ page.lang | default: site.default_lang | upcase }}</span>
-              <span class="dropdown-arrow">▼</span>
-            </button>
-            <div id="language-menu" class="language-menu">
-              <a href="#" data-lang="en" class="language-option">EN</a>
-              <a href="#" data-lang="fr" class="language-option">FR</a>
-              <a href="#" data-lang="nl" class="language-option">NL</a>
-            </div>
-          </div> -->
-        </nav>
+          <nav id="nav-menu" class="nav-links">
+            <img src="/assets/img/x-solid-full.svg" alt="Close Menu" id="nav-close" class="nav-close">
+            <a href="{{ '/home/' | relative_url }}">Home</a>
+            <a href="{{ '/contact/' | relative_url }}">Contact</a>
+            
+            <!-- <div class="language-dropdown">
+              <button id="language-toggle" class="language-button" aria-label="Select language">
+                <span id="current-lang">{{ page.lang | default: site.default_lang | upcase }}</span>
+                <span class="dropdown-arrow">▼</span>
+              </button>
+              <div id="language-menu" class="language-menu">
+                <a href="#" data-lang="en" class="language-option">EN</a>
+                <a href="#" data-lang="fr" class="language-option">FR</a>
+                <a href="#" data-lang="nl" class="language-option">NL</a>
+              </div>
+            </div> -->
+          </nav>
+        </div>
+      </div>
+      <div class="navbar-color-blocks">
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
       </div>
     </header>
 
