@@ -1,11 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Get elements
+  const carousel = document.querySelector('.carousel');
   const track = document.querySelector('.carousel-track');
   const indicators = document.querySelectorAll('.indicator');
   const slides = document.querySelectorAll('.carousel-slide');
 
   // Only initialize if carousel exists on the page
-  if (!track || !indicators.length || !slides.length) return;
+  if (!carousel || !track || !indicators.length || !slides.length) return;
 
   let currentIndex = 0;
   let autoAdvanceInterval;
@@ -50,20 +51,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Touch/swipe support for mobile
   let touchStartX = 0;
-  let touchEndX = 0;
 
-  track.addEventListener('touchstart', (e) => {
-    touchStartX = e.changedTouches[0].clientX;
+  carousel.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
   }, { passive: true });
 
-  track.addEventListener('touchend', (e) => {
-    touchEndX = e.changedTouches[0].clientX;
-    handleSwipe();
-  }, { passive: true });
-
-  function handleSwipe() {
-    const swipeThreshold = 20;
+  carousel.addEventListener('touchend', (e) => {
+    const touchEndX = e.changedTouches[0].clientX;
     const diff = touchStartX - touchEndX;
+    const swipeThreshold = 20;
 
     if (Math.abs(diff) > swipeThreshold) {
       stopAutoAdvance();
@@ -75,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
         updateCarousel(currentIndex - 1);
       }
     }
-  }
+  }, { passive: true });
 
   // Auto-advance every 7 seconds
   autoAdvanceInterval = setInterval(() => {
