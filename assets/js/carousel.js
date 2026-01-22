@@ -8,6 +8,15 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!track || !indicators.length || !slides.length) return;
 
   let currentIndex = 0;
+  let autoAdvanceInterval;
+
+  // Stop auto-advance when user interacts
+  function stopAutoAdvance() {
+    if (autoAdvanceInterval) {
+      clearInterval(autoAdvanceInterval);
+      autoAdvanceInterval = null;
+    }
+  }
 
   // Update carousel position and indicators
   function updateCarousel(index) {
@@ -34,6 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
   indicators.forEach((indicator) => {
     indicator.addEventListener('click', (e) => {
       const index = parseInt(e.target.dataset.index);
+      stopAutoAdvance();
       updateCarousel(index);
     });
   });
@@ -52,10 +62,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }, { passive: true });
 
   function handleSwipe() {
-    const swipeThreshold = 50;
+    const swipeThreshold = 20;
     const diff = touchStartX - touchEndX;
 
     if (Math.abs(diff) > swipeThreshold) {
+      stopAutoAdvance();
       if (diff > 0) {
         // Swiped left - go to next slide
         updateCarousel(currentIndex + 1);
@@ -67,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Auto-advance every 7 seconds
-  setInterval(() => {
+  autoAdvanceInterval = setInterval(() => {
     const nextIndex = (currentIndex + 1) % slides.length;
     updateCarousel(nextIndex);
   }, 7000);
