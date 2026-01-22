@@ -36,7 +36,7 @@ html {
 body {
   margin: 0;
   overflow-x: hidden;
-  font-family: "Source Sans 3", sans-serif;
+  font-family: "Tahoma", sans-serif;
   color: var(--text-primary);
   background-color: var(--bg-primary);
   font-size: 18px;
@@ -195,7 +195,7 @@ a {
 }
 
 .tagline-text {
-  font-size: 1rem;
+  font-size: 0.8rem;
   line-height: 1.1rem;
   padding-top: 2px;
 }
@@ -211,7 +211,7 @@ a {
 
 .main-heading {
   font-size: 4rem;
-  line-height: 3rem;
+  line-height: 3.3rem;
   font-weight: 900;
   padding-bottom: 16px;
   border-bottom: 1px solid var(--brand);
@@ -255,9 +255,9 @@ a {
 }
 
 .highlight-subtitle {
-  padding-top: 10px;
+  padding-top: 18px;
   font-size: 1rem;
-  font-weight: 300;
+  line-height: 1.6rem
 }
 
 .call-to-action-text {
@@ -272,6 +272,7 @@ a {
   padding: 12px 35px;
   color: var(--bg-primary);
   background-color: var(--brand);
+  font-size: 0.9rem;
 }
 
 /* ========================================
@@ -385,6 +386,68 @@ a {
       background: #333;
       width: 32px;
     }
+
+/* ========================================
+  FOOTER STYLES
+  ======================================== */
+
+footer {
+   border-top: 1px solid rgba(0, 0, 0, 0.3);
+   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+   padding-top: 30px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  padding: 20px 3%;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.footer-brand img {
+  height: 50px;
+  width: 50px;
+}
+
+.footer-tagline {
+  padding: 0 6%;
+  font-size: 0.9rem;
+  line-height: 1.4rem;
+  color: #A8A8A8;
+}
+
+.footer-links-container {
+  padding: 0 6%;
+  display: flex;
+  gap: 7rem;
+  flex-direction: row;
+}
+
+.footer-nav-links, .footer-social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.footer-links-title { 
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: #A8A8A8;
+  margin-bottom: 0.5rem;
+}
+
+.footer-spacer {
+  margin: 35px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+footer a {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
 
 /* ========================================
    MOBILE STYLES
