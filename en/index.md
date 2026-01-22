@@ -96,6 +96,18 @@ permalink: /home/
   </div>
 </div>
 
-<div style="margin-top: 40px">
+<div class="content-block" style="margin-top: 60px">
+  <div class="call-to-action-text">
+    Senior Advice. Exactly When You Need It.
+  </div>
+
+  <div style="margin-top: 40px; text-align: center;">
+    <a class="call-to-action-button">
+      GET IN TOUCH
+    </a>
+  </div>
+</div>
+
+<div class="content-block" style="margin-top: 40px">
 .
 </div>
