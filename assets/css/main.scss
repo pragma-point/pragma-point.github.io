@@ -260,6 +260,17 @@ a {
   line-height: 1.6rem
 }
 
+@media (min-width: 1024px) {
+  .highlights {
+    flex-wrap: nowrap;
+  }
+
+  .highlight {
+    min-width: 0;
+    flex: 1;
+  }
+}
+
 .call-to-action-text {
   text-align: center;
   font-size: 2.8rem;
@@ -282,6 +293,7 @@ a {
    .carousel-container {
       width: 100%;
       max-width: 600px;
+      margin: 0 auto;
     }
 
     .carousel {
@@ -386,6 +398,36 @@ a {
       background: #333;
       width: 32px;
     }
+
+/* ========================================
+   CAROUSEL - DESKTOP STYLES (side by side)
+   ======================================== */
+
+@media (min-width: 1024px) {
+  .carousel-container {
+    max-width: 100%;
+  }
+
+  .carousel {
+    overflow: visible;
+    box-shadow: none;
+  }
+
+  .carousel-track {
+    display: flex;
+    gap: 1.5rem;
+    transition: none;
+  }
+
+  .carousel-slide {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .carousel-indicators {
+    display: none;
+  }
+}
 
 /* ========================================
   FOOTER STYLES

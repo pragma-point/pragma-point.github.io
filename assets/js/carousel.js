@@ -9,7 +9,12 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!carousel || !track || !indicators.length || !slides.length) return;
 
   let currentIndex = 0;
-  let autoAdvanceInterval;
+  let autoAdvanceInterval = null;
+  let isInitialized = false;
+
+  // Event handler references for cleanup
+  let touchStartHandler, touchEndHandler;
+  const indicatorHandlers = [];
 
   // Stop auto-advance when user interacts
   function stopAutoAdvance() {
@@ -21,61 +26,114 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Update carousel position and indicators
   function updateCarousel(index) {
-    // Ensure index is within bounds
     if (index < 0) index = 0;
     if (index >= slides.length) index = slides.length - 1;
 
     currentIndex = index;
-
-    // Move the track
     track.style.transform = `translateX(-${index * 100}%)`;
 
-    // Update indicators
     indicators.forEach((indicator, i) => {
-      if (i === index) {
-        indicator.classList.add('active');
-      } else {
-        indicator.classList.remove('active');
-      }
+      indicator.classList.toggle('active', i === index);
     });
   }
 
-  // Add click handlers to indicators
-  indicators.forEach((indicator) => {
-    indicator.addEventListener('click', (e) => {
-      const index = parseInt(e.target.dataset.index);
-      stopAutoAdvance();
-      updateCarousel(index);
+  // Initialize carousel behavior
+  function initCarousel() {
+    if (isInitialized) return;
+    isInitialized = true;
+
+    currentIndex = 0;
+    updateCarousel(0);
+
+    // Add click handlers to indicators
+    indicators.forEach((indicator, i) => {
+      const handler = (e) => {
+        const index = parseInt(e.target.dataset.index);
+        stopAutoAdvance();
+        updateCarousel(index);
+      };
+      indicatorHandlers[i] = handler;
+      indicator.addEventListener('click', handler);
     });
-  });
 
-  // Touch/swipe support for mobile
-  let touchStartX = 0;
+    // Touch/swipe support
+    let touchStartX = 0;
 
-  carousel.addEventListener('touchstart', (e) => {
-    touchStartX = e.touches[0].clientX;
-  }, { passive: true });
+    touchStartHandler = (e) => {
+      touchStartX = e.touches[0].clientX;
+    };
 
-  carousel.addEventListener('touchend', (e) => {
-    const touchEndX = e.changedTouches[0].clientX;
-    const diff = touchStartX - touchEndX;
-    const swipeThreshold = 20;
+    touchEndHandler = (e) => {
+      const touchEndX = e.changedTouches[0].clientX;
+      const diff = touchStartX - touchEndX;
+      const swipeThreshold = 20;
 
-    if (Math.abs(diff) > swipeThreshold) {
-      stopAutoAdvance();
-      if (diff > 0) {
-        // Swiped left - go to next slide
-        updateCarousel(currentIndex + 1);
-      } else {
-        // Swiped right - go to previous slide
-        updateCarousel(currentIndex - 1);
+      if (Math.abs(diff) > swipeThreshold) {
+        stopAutoAdvance();
+        if (diff > 0) {
+          updateCarousel(currentIndex + 1);
+        } else {
+          updateCarousel(currentIndex - 1);
+        }
       }
-    }
-  }, { passive: true });
+    };
 
-  // Auto-advance every 7 seconds
-  autoAdvanceInterval = setInterval(() => {
-    const nextIndex = (currentIndex + 1) % slides.length;
-    updateCarousel(nextIndex);
-  }, 7000);
+    carousel.addEventListener('touchstart', touchStartHandler, { passive: true });
+    carousel.addEventListener('touchend', touchEndHandler, { passive: true });
+
+    // Auto-advance every 7 seconds
+    autoAdvanceInterval = setInterval(() => {
+      const nextIndex = (currentIndex + 1) % slides.length;
+      updateCarousel(nextIndex);
+    }, 7000);
+  }
+
+  // Destroy carousel behavior
+  function destroyCarousel() {
+    if (!isInitialized) return;
+    isInitialized = false;
+
+    stopAutoAdvance();
+
+    // Remove indicator handlers
+    indicators.forEach((indicator, i) => {
+      if (indicatorHandlers[i]) {
+        indicator.removeEventListener('click', indicatorHandlers[i]);
+      }
+    });
+
+    // Remove touch handlers
+    if (touchStartHandler) {
+      carousel.removeEventListener('touchstart', touchStartHandler);
+    }
+    if (touchEndHandler) {
+      carousel.removeEventListener('touchend', touchEndHandler);
+    }
+
+    // Reset carousel position
+    track.style.transform = '';
+    currentIndex = 0;
+    indicators.forEach((indicator, i) => {
+      indicator.classList.toggle('active', i === 0);
+    });
+  }
+
+  // Handle screen size changes
+  const mediaQuery = window.matchMedia('(min-width: 1024px)');
+
+  function handleScreenChange(e) {
+    if (e.matches) {
+      // Desktop - destroy carousel
+      destroyCarousel();
+    } else {
+      // Mobile - initialize carousel
+      initCarousel();
+    }
+  }
+
+  // Listen for changes
+  mediaQuery.addEventListener('change', handleScreenChange);
+
+  // Initial check
+  handleScreenChange(mediaQuery);
 });
