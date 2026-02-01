@@ -40,6 +40,9 @@ body {
   color: var(--text-primary);
   background-color: var(--bg-primary);
   font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 a {
@@ -59,6 +62,7 @@ a {
 .content-container {
   flex-direction: column;
   align-items: center;
+  flex: 1;
 }
 
 .navbar-container {
@@ -176,6 +180,66 @@ a {
 
 .nav-close {
   display: none;
+}
+
+.language-indicator {
+  height: 60%;
+  display: flex;
+  align-items: flex-end;
+  align-self: flex-end;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.60rem 1.25rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  border-left: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  cursor: pointer;
+  position: relative;
+}
+
+.dropdown-arrow {
+  font-size: 0.6rem;
+  transition: transform 0.2s ease;
+}
+
+.language-indicator.open .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.language-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: var(--bg-primary);
+  border: 1px solid #ddd;
+  display: none;
+  flex-direction: column;
+  min-width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.language-menu.show {
+  display: flex;
+}
+
+.language-option {
+  display: block;
+  padding: 0.6rem 1.25rem;
+  text-align: center;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.language-option:hover {
+  background-color: black;
+  color: var(--bg-primary);
+}
+
+.language-option.active {
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 /* ========================================

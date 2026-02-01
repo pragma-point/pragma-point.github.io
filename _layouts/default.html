@@ -32,14 +32,16 @@
         const langOptions = document.querySelectorAll(".language-option");
 
         langToggle.addEventListener("click", (e) => {
-          e.preventDefault();
+          e.stopPropagation();
+          langToggle.classList.toggle("open");
           langMenu.classList.toggle("show");
         });
 
         // Close dropdown when clicking outside
         document.addEventListener("click", (e) => {
-          if (!langToggle.contains(e.target) && !langMenu.contains(e.target)) {
+          if (!langToggle.contains(e.target)) {
             langMenu.classList.remove("show");
+            langToggle.classList.remove("open");
           }
         });
 
@@ -88,18 +90,15 @@
             <img src="/assets/img/x-solid-full.svg" alt="Close Menu" id="nav-close" class="nav-close">
             <a href="{{ '/home/' | relative_url }}">Home</a>
             <a href="{{ '/contact/' | relative_url }}">Contact</a>
-            
-            <!-- <div class="language-dropdown">
-              <button id="language-toggle" class="language-button" aria-label="Select language">
-                <span id="current-lang">{{ page.lang | default: site.default_lang | upcase }}</span>
-                <span class="dropdown-arrow">▼</span>
-              </button>
-              <div id="language-menu" class="language-menu">
-                <a href="#" data-lang="en" class="language-option">EN</a>
-                <a href="#" data-lang="fr" class="language-option">FR</a>
-                <a href="#" data-lang="nl" class="language-option">NL</a>
+            <div class="language-indicator" id="language-toggle">
+              <span>{{ page.lang | default: site.default_lang | upcase }}</span>
+              <span class="dropdown-arrow">▼</span>
+              <div class="language-menu" id="language-menu">
+                <a href="#" data-lang="en" class="language-option {% if page.lang == 'en' %}active{% endif %}">EN</a>
+                <a href="#" data-lang="fr" class="language-option {% if page.lang == 'fr' %}active{% endif %}">FR</a>
+                <a href="#" data-lang="nl" class="language-option {% if page.lang == 'nl' %}active{% endif %}">NL</a>
               </div>
-            </div> -->
+            </div>
           </nav>
         </div>
       </div>
