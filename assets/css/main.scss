@@ -377,19 +377,19 @@ a {
     }
 
     .carousel-track {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(3, 100%);
+      grid-template-rows: auto auto 1fr;
       transition: transform 0.4s ease-in-out;
     }
 
     .carousel-slide {
-      min-width: 100%;
-      flex-shrink: 0;
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-row: span 3;
       background-color: var(--svb-orange);
       padding: 2rem;
       color: var(--text-primary);
-      display: flex;
-      flex-direction: column;
-      // gap: 2rem;
       pointer-events: none;
     }
 
@@ -484,14 +484,10 @@ a {
   }
 
   .carousel-track {
-    display: flex;
-    gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: calc(450px * 3 + 4rem);
     transition: none;
-  }
-
-  .carousel-slide {
-    min-width: 0;
-    flex: 1;
   }
 
   .carousel-indicators {
