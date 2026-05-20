@@ -16,32 +16,36 @@ permalink: /home/
   <div class="main-heading">
     <b>THE RIGHT ADVICE. WHEN YOU ACTUALLY NEED IT.</b>
   </div>
+  
+  <div class="index-sub-heading">
+    <b>CLEAR SCOPE. FIXED FEES. TOTAL TRANSPARENCY.</b>
+  </div>
 </div>
 
 <div class="content-block" style="margin-top: 55px;">
   <div class="highlights">
     <div class="highlight highlight-orange">
       <p class="highlight-title">
-        <b>STRATEGIC ADVISORY</b>
+        <b>BUSINESS STRATEGY</b>
       </p>
       <p class="highlight-subtitle">
-        High-level insights for founders and boards navigating complex pivots and growth phases.
+        Defining direction, structuring growth, and strengthening operational performance for ambitious companies.
       </p>
     </div>
     <div class="highlight highlight-teal">
       <p class="highlight-title">
-        <b>OPERATIONAL EXCELLENCE</b>
+        <b>LEGAL SUPPORT</b>
       </p>
       <p class="highlight-subtitle">
-        Streamlining workflows and systems to ensure your team operates at peak efficiency.
+        Trusted legal advisor that protects your company & secures critical decisions.
       </p>
     </div>
     <div class="highlight highlight-grey">
       <p class="highlight-title">
-        <b>DIGITAL TRANSFORMATION</b>
+        <b>AI OPERATIONS</b>
       </p>
       <p class="highlight-subtitle">
-        Leveraging modern tech to streamline your legacy business practices.
+        Integrating AI into core operations to elevate productivity, decision-making, and execution.
       </p>
     </div>
   </div>
@@ -51,39 +55,24 @@ permalink: /home/
   <div class="carousel">
     <div class="carousel-track">
       <div class="carousel-slide">
-        <div class="slide-label">Structure</div>
-        <div class="slide-title">Fix the Way Your Business Is Organised</div>
+        <div class="slide-label">Strategy</div>
+        <div class="slide-title">Bring structure and direction to your growth</div>
         <div class="slide-description">
-          From chaos to clarity—structures that actually scale. We help you rethink your org chart,
-          shareholder structure, governance and incentive models.
-        </div>
-        <div class="slide-features">
-          <span class="feature-arrow">→</span>
-          <span class="feature-text">Org charts, roles & responsibilities, M&A prep, incentive alignment.</span>
+          Turn ambition into disciplined execution. We clarify priorities, define strategic choices, and translate them into concrete roadmaps that strengthen operations and enable sustainable scaling.
         </div>
       </div>
       <div class="carousel-slide slide-2">
-        <div class="slide-label">Growth</div>
-        <div class="slide-title">Scale Your Revenue Operations</div>
+        <div class="slide-label">Legal</div>
+        <div class="slide-title">Protect your company when problems arise</div>
         <div class="slide-description">
-          Build repeatable systems that turn leads into customers. We optimize your sales funnel,
-          automate processes, and create predictable growth engines.
-        </div>
-        <div class="slide-features">
-          <span class="feature-arrow">→</span>
-          <span class="feature-text">Sales playbooks, CRM setup, pipeline management, revenue forecasting.</span>
+          Receive clear, business-oriented legal guidance grounded in practical reality. We secure critical decisions, anticipate risks, and ensure your contracts, governance, and corporate structure support long-term stability.
         </div>
       </div>
       <div class="carousel-slide slide-3">
-        <div class="slide-label">People</div>
-        <div class="slide-title">Build High-Performance Teams</div>
+        <div class="slide-label">AI</div>
+        <div class="slide-title">Make AI work inside your company, not just in theory.</div>
         <div class="slide-description">
-          Attract, retain, and develop top talent. We design compensation frameworks,
-          performance systems, and company culture that scales with your business.
-        </div>
-        <div class="slide-features">
-          <span class="feature-arrow">→</span>
-          <span class="feature-text">Hiring frameworks, onboarding systems, performance reviews, culture design.</span>
+          Move beyond experimentation and implement AI where it creates measurable impact. We identify high-leverage use cases, integrate tools into daily workflows, and ensure teams adopt them effectively and responsibly.
         </div>
       </div>
     </div>
