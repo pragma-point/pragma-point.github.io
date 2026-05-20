@@ -351,10 +351,12 @@ a {
 }
 
 .call-to-action-button {
-  padding: 12px 35px;
+  padding: 18px 35px;
   color: var(--bg-primary);
   background-color: var(--brand);
   font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
 }
 
 /* ========================================
@@ -380,14 +382,14 @@ a {
     .carousel-track {
       display: grid;
       grid-template-columns: repeat(3, 100%);
-      grid-template-rows: auto auto 1fr;
+      grid-template-rows: auto auto 1fr auto;
       transition: transform 0.4s ease-in-out;
     }
 
     .carousel-slide {
       display: grid;
       grid-template-rows: subgrid;
-      grid-row: span 3;
+      grid-row: span 4;
       background-color: var(--svb-orange);
       padding: 2rem;
       color: var(--text-primary);
@@ -434,6 +436,19 @@ a {
       font-size: 1.3rem;
       line-height: 1.5rem;
       padding-top: 40px;
+    }
+
+    .slide-cta {
+      margin: 20px auto 0 auto;
+      background-color: var(--brand);
+      padding: 14px 24px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .slide-cta a {
+      color: var(--text-secondary);
     }
 
     .feature-arrow {

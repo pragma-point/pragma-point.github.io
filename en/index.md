@@ -60,6 +60,9 @@ permalink: /home/
         <div class="slide-description">
           Turn ambition into disciplined execution. We clarify priorities, define strategic choices, and translate them into concrete roadmaps that strengthen operations and enable sustainable scaling.
         </div>
+        <div class="slide-cta">
+          <a>MORE INFO</a>
+        </div>
       </div>
       <div class="carousel-slide slide-2">
         <div class="slide-label">Legal</div>
@@ -67,12 +70,18 @@ permalink: /home/
         <div class="slide-description">
           Receive clear, business-oriented legal guidance grounded in practical reality. We secure critical decisions, anticipate risks, and ensure your contracts, governance, and corporate structure support long-term stability.
         </div>
+        <div class="slide-cta">
+          <a>MORE INFO</a>
+        </div>
       </div>
       <div class="carousel-slide slide-3">
         <div class="slide-label">AI</div>
         <div class="slide-title">Make AI work inside your company, not just in theory.</div>
         <div class="slide-description">
           Move beyond experimentation and implement AI where it creates measurable impact. We identify high-leverage use cases, integrate tools into daily workflows, and ensure teams adopt them effectively and responsibly.
+        </div>
+        <div class="slide-cta">
+          <a>MORE INFO</a>
         </div>
       </div>
     </div>
