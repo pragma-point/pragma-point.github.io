@@ -1,22 +1,25 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Get elements
-  const carousel = document.querySelector('.carousel');
-  const track = document.querySelector('.carousel-track');
-  const indicators = document.querySelectorAll('.indicator');
-  const slides = document.querySelectorAll('.carousel-slide');
+  const containers = document.querySelectorAll('.carousel-container');
+  if (!containers.length) return;
 
-  // Only initialize if carousel exists on the page
+  containers.forEach(setupCarousel);
+});
+
+function setupCarousel(container) {
+  const carousel = container.querySelector('.carousel');
+  const track = container.querySelector('.carousel-track');
+  const indicators = container.querySelectorAll('.indicator');
+  const slides = container.querySelectorAll('.carousel-slide');
+
   if (!carousel || !track || !indicators.length || !slides.length) return;
 
   let currentIndex = 0;
   let autoAdvanceInterval = null;
   let isInitialized = false;
 
-  // Event handler references for cleanup
   let touchStartHandler, touchEndHandler;
   const indicatorHandlers = [];
 
-  // Stop auto-advance when user interacts
   function stopAutoAdvance() {
     if (autoAdvanceInterval) {
       clearInterval(autoAdvanceInterval);
@@ -24,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Update carousel position and indicators
   function updateCarousel(index) {
     if (index < 0) index = 0;
     if (index >= slides.length) index = slides.length - 1;
@@ -37,7 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Initialize carousel behavior
   function initCarousel() {
     if (isInitialized) return;
     isInitialized = true;
@@ -45,7 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
     currentIndex = 0;
     updateCarousel(0);
 
-    // Add click handlers to indicators
     indicators.forEach((indicator, i) => {
       const handler = (e) => {
         const index = parseInt(e.target.dataset.index);
@@ -56,7 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
       indicator.addEventListener('click', handler);
     });
 
-    // Touch/swipe support
     let touchStartX = 0;
 
     touchStartHandler = (e) => {
@@ -81,28 +80,24 @@ document.addEventListener("DOMContentLoaded", () => {
     carousel.addEventListener('touchstart', touchStartHandler, { passive: true });
     carousel.addEventListener('touchend', touchEndHandler, { passive: true });
 
-    // Auto-advance every 7 seconds
     autoAdvanceInterval = setInterval(() => {
       const nextIndex = (currentIndex + 1) % slides.length;
       updateCarousel(nextIndex);
     }, 7000);
   }
 
-  // Destroy carousel behavior
   function destroyCarousel() {
     if (!isInitialized) return;
     isInitialized = false;
 
     stopAutoAdvance();
 
-    // Remove indicator handlers
     indicators.forEach((indicator, i) => {
       if (indicatorHandlers[i]) {
         indicator.removeEventListener('click', indicatorHandlers[i]);
       }
     });
 
-    // Remove touch handlers
     if (touchStartHandler) {
       carousel.removeEventListener('touchstart', touchStartHandler);
     }
@@ -110,7 +105,6 @@ document.addEventListener("DOMContentLoaded", () => {
       carousel.removeEventListener('touchend', touchEndHandler);
     }
 
-    // Reset carousel position
     track.style.transform = '';
     currentIndex = 0;
     indicators.forEach((indicator, i) => {
@@ -118,22 +112,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Handle screen size changes
   const mediaQuery = window.matchMedia('(min-width: 1024px)');
 
   function handleScreenChange(e) {
     if (e.matches) {
-      // Desktop - destroy carousel
       destroyCarousel();
     } else {
-      // Mobile - initialize carousel
       initCarousel();
     }
   }
 
-  // Listen for changes
   mediaQuery.addEventListener('change', handleScreenChange);
-
-  // Initial check
   handleScreenChange(mediaQuery);
-});
+}

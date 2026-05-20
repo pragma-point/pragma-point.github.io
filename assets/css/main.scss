@@ -382,26 +382,28 @@ a {
     .carousel-track {
       display: grid;
       grid-template-columns: repeat(3, 100%);
-      grid-template-rows: auto auto 1fr auto;
       transition: transform 0.4s ease-in-out;
     }
 
     .carousel-slide {
-      display: grid;
-      grid-template-rows: subgrid;
-      grid-row: span 4;
-      background-color: var(--svb-orange);
       padding: 2rem;
       color: var(--text-primary);
       pointer-events: none;
     }
 
-    .carousel-slide.slide-2 {
-      background-color: var(--svb-teal);
+    .slide-orange { background-color: var(--svb-orange); }
+    .slide-teal   { background-color: var(--svb-teal); }
+    .slide-grey   { background-color: var(--svb-grey); }
+
+    /* Rich variant: subgrid layout for label/title/description/cta */
+    .carousel-rich .carousel-track {
+      grid-template-rows: auto auto 1fr auto;
     }
 
-    .carousel-slide.slide-3 {
-      background-color: var(--svb-grey);
+    .carousel-rich .carousel-slide {
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-row: span 4;
     }
 
     .slide-label {
@@ -512,6 +514,23 @@ a {
   .carousel-indicators {
     display: none;
   }
+}
+
+/* ========================================
+  SERVICE PAGE STYLES
+  ======================================== */
+
+.services-main-heading {
+  font-size: 3.5rem;
+  line-height: 3rem;
+  font-weight: 900;
+  padding-bottom: 16px;
+}
+
+.services-sub-heading {
+  margin-top: 15px;
+  font-size: 1.7rem;
+  font-weight: 900;
 }
 
 /* ========================================

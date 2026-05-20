@@ -51,10 +51,10 @@ permalink: /home/
   </div>
 </div>
 
-<div class="content-block carousel-container" style="margin-top: 60px;">
+<div class="content-block carousel-container carousel-rich" style="margin-top: 60px;">
   <div class="carousel">
     <div class="carousel-track">
-      <div class="carousel-slide">
+      <div class="carousel-slide slide-orange">
         <div class="slide-label">Strategy</div>
         <div class="slide-title">Bring structure and direction to your growth</div>
         <div class="slide-description">
@@ -64,7 +64,7 @@ permalink: /home/
           <a href="{{ '/services/' | relative_url }}">MORE INFO</a>
         </div>
       </div>
-      <div class="carousel-slide slide-2">
+      <div class="carousel-slide slide-teal">
         <div class="slide-label">Legal</div>
         <div class="slide-title">Protect your company when problems arise</div>
         <div class="slide-description">
@@ -74,7 +74,7 @@ permalink: /home/
           <a href="{{ '/services/' | relative_url }}">MORE INFO</a>
         </div>
       </div>
-      <div class="carousel-slide slide-3">
+      <div class="carousel-slide slide-grey">
         <div class="slide-label">AI</div>
         <div class="slide-title">Make AI work inside your company, not just in theory.</div>
         <div class="slide-description">
