@@ -333,6 +333,7 @@ a {
 @media (min-width: 1024px) {
   .highlights {
     flex-wrap: nowrap;
+    justify-content: center;
   }
 
   .highlight {
@@ -487,6 +488,7 @@ a {
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     max-width: calc(450px * 3 + 4rem);
+    margin: 0 auto;
     transition: none;
   }
 
