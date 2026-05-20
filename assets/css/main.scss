@@ -441,13 +441,15 @@ a {
     .slide-cta {
       margin: 20px auto 0 auto;
       background-color: var(--brand);
-      padding: 14px 24px;
       font-size: 0.9rem;
       font-weight: 700;
       letter-spacing: 0.05em;
+      pointer-events: auto;
     }
 
     .slide-cta a {
+      display: block;
+      padding: 14px 24px;
       color: var(--text-secondary);
     }
 
